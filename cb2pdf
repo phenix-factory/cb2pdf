@@ -4,7 +4,7 @@
 # Parce qu'il y en a marre de le faire à la main.
 
 # On commence par déterminer le type, si c'est un CBZ ou un CBR
-for file in $1; do
+for file in "$@"; do
     extension=${file#*.}
     name=${file%.*}
 

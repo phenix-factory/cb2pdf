@@ -9,7 +9,7 @@ for file in "$@"; do
     name=${file%.*}
 
     # Nom du répertoire temporaire
-    tmp_name="cb_tmp"$name
+    tmp_name=$name".tmp"
 
     # maintenant qu'on a l'extension il nous suffit de décompresser avec le bon outil.
 

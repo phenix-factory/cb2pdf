@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Script de conversion de fichier CBR/CBZ en PDF.
+# Parce qu'il y en a marre de le faire à la main.
+
+# On commence par déterminer le type, si c'est un CBZ ou un CBR
+for file in $1; do
+    extension=${file#*.}
+    name=${file%.*}
+
+    # Nom du répertoire temporaire
+    tmp_name="cb_tmp"$name
+
+    # maintenant qu'on a l'extension il nous suffit de décompresser avec le bon outil.
+
+    # On va créer un repertoire temporaire pour accuillir l'archive
+    mkdir "$tmp_name"/
+
+    # On extrait dans TMP
+    if [ "$extension" = "cbr" ]; then
+        unrar e "$file" "$tmp_name"/
+    elif [ "$extension" = "cbz" ]; then
+        # Unzip pour les fichier cbz
+        unzip "$file" -d "$tmp_name"/
+    fi
+
+    # on lance la commande de convesion en PDF des fichiers
+    convert -verbose -compress jpeg "$tmp_name/*.jpg" "$name.pdf"
+
+    # maintenant que le PDF est fait, on supprime le répertoire tmp
+    rm -Rf "$tmp_name"/
+done

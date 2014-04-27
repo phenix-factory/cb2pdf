@@ -17,9 +17,9 @@ for file in "$@"; do
     mkdir "$tmp_name"/
 
     # On extrait dans TMP
-    if [ "$extension" = "cbr" ]; then
+    if [ "$extension" = "cbr" -o "$extension" = "rar" ]; then
         unrar e "$file" "$tmp_name"/
-    elif [ "$extension" = "cbz" ]; then
+    elif [ "$extension" = "cbz" -o "$extension" = "zip" ]; then
         # Unzip pour les fichier cbz
         unzip "$file" -d "$tmp_name"/
     fi

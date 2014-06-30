@@ -21,7 +21,7 @@ for file in "$@"; do
         unrar e "$file" "$tmp_name"/
     elif [ "$extension" = "cbz" -o "$extension" = "zip" ]; then
         # Unzip pour les fichier cbz
-        unzip "$file" -d "$tmp_name"/
+        unzip -j "$file" -d "$tmp_name"/
     fi
 
     # on lance la commande de convesion en PDF des fichiers

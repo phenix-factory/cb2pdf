@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Script qui va convertir tout les .jpg des sous dossier en PDF
+mkdir pdf
+for file in *; do
+    convert -verbose -compress jpeg "$file/*.{jpg,png,gif,tiff,jpeg}" "pdf/$file.pdf"
+done

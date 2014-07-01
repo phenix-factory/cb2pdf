@@ -25,7 +25,7 @@ for file in "$@"; do
     fi
 
     # on lance la commande de convesion en PDF des fichiers
-    convert -verbose -compress jpeg "$tmp_name/*.jpg" "$name.pdf"
+    convert -verbose -compress jpeg "$tmp_name/*.{jpg,png,gif,tiff,jpeg}" "$name.pdf"
 
     # maintenant que le PDF est fait, on supprime le répertoire tmp
     rm -Rf "$tmp_name"/

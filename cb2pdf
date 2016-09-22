@@ -5,8 +5,8 @@
 
 # On commence par déterminer le type, si c'est un CBZ ou un CBR
 for file in "$@"; do
-    extension=${file#*.}
-    name=${file%.*}
+    extension="${file##*.}"
+    name="${file%.*}"
 
     # Nom du répertoire temporaire
     tmp_name=$name".tmp"
